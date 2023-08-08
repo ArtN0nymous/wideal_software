@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ResponsePost } from '../interfaces/interfaces';
+import { ResponsePost, Post } from '../interfaces/interfaces';
+import { DataLocalService } from './data-local.service';
+import { UsuariosService } from './usuarios.service';
+import {FileTransfer,FileUploadOptions,FileTransferObject} from '@awesome-cordova-plugins/file-transfer/ngx'
 const URL = environment.url;
 @Injectable({
   providedIn: 'root'
@@ -9,18 +12,59 @@ const URL = environment.url;
 export class PostsService {
 
   pagina = 0;
-  constructor(private http:HttpClient) { }
-  private executeQuery<T>( endpoint: string,params:any) {
-    console.log('Petición HTTP realizada');
+  token:string = '';
+  newPOst = new EventEmitter<Post>();
+  constructor(private http:HttpClient,private usuarioService:UsuariosService, private fileTransfer:FileTransfer) {
+    usuarioService.loadToken().then((res)=>{
+      this.token = usuarioService.token||'';
+    });
+  }
+  private executeQuery<T>( endpoint: string,params:any,headers:any) {
     return this.http.get<T>(`${ URL }${ endpoint }`, {
       params,
-      headers:{
-        "x-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY0NGFjNjA4MzkwZDJiNTYxN2NhOGEyYSIsIm5vbWJyZSI6IlJhbW9uIiwiZW1haWwiOiJleGFtcGxlOUBtYWlsLmNvbSIsImF2YXRhciI6ImF2LTEucG5nIn0sImlhdCI6MTY4MjYyMTk2MCwiZXhwIjoxNjg1MjEzOTYwfQ.uo7rh4uC4TQvShw2H0kXi8Hzgdikl9snZUMq6iPvz7I"
-      }
+      headers,
     });
    }
-  getPost(){
+  getPost(pull:boolean=false){
+    if(pull!==false){
+      this.pagina=0;
+    }
     this.pagina ++;
-    return this.executeQuery<ResponsePost>('/posts/',{pagina:this.pagina});
+    return this.executeQuery<ResponsePost>('/posts',{pagina:this.pagina},{'x-token':this.usuarioService.token});
+  }
+  post(post:any){
+    const headers = new HttpHeaders({
+      'x-token':this.token,
+    });
+    return new Promise((resolve)=>{
+      this.http.post(URL+'/posts/',post,{headers}).subscribe((res:any)=>{
+        this.newPOst.emit(res.result);
+        if(res.ok){
+          resolve(true);
+        }else{
+          resolve(false);
+        }
+      });
+    });
+    
+  }
+
+  subirImg(img:string){
+    const options:FileUploadOptions={
+      fileKey:'image',
+      headers:{
+        'x-token':this.usuarioService.token,
+      },
+    };
+    const fileTransfer:FileTransferObject = this.fileTransfer.create();
+
+    fileTransfer.upload(img,URL+'/posts/upload',options)
+    .then((result)=>{
+      console.log('result',result);
+      alert(result);
+    }).catch((err)=>{
+      console.log('err',err);
+      alert(err);
+    });
   }
 }

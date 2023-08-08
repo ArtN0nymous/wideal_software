@@ -6,12 +6,14 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-
+import{HttpClientModule} from "@angular/common/http";
+import { IonicStorageModule } from '@ionic/storage-angular';
+import {FileTransfer} from '@awesome-cordova-plugins/file-transfer/ngx'
+import { CameraPlugin } from '@capacitor/camera/dist/esm/index';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,IonicStorageModule.forRoot()],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileTransfer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
