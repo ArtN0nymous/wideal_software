@@ -16,3 +16,15 @@ img {
     transition: opacity 0.5s linear;
     opacity: 1 !important;
 }
+.inputs-login{
+    background-color: white !important;
+    border-radius: 10px;
+}
+ion-content {
+    --background: linear-gradient(to bottom, #450fd9, #22b1ce);
+  }
+.login-form{
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+}

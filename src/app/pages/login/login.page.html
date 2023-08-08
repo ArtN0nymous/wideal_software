@@ -5,22 +5,22 @@
     
     <ion-slide>
 
-      <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
+      <form (ngSubmit)="login(fLogin)" #fLogin="ngForm" class="login-form">
         <ion-grid fixed>
 
           <ion-row>
             <ion-col>
-              <img src="/assets/avatars/av-1.png">
+              <img src="/assets/icon.png">
             </ion-col>
           </ion-row>
         
           <ion-row>
             <ion-col>
               
-                <ion-list>
+                <ion-list class="inputs-login">
                   
                   <ion-item>
-                    <ion-label>Email</ion-label>
+                    <ion-label>Usuario:</ion-label>
                     <ion-input name="email"
                                 type="email"
                                 [(ngModel)]="loginUser.user"
@@ -28,7 +28,7 @@
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Password</ion-label>
+                    <ion-label>Contraseña:</ion-label>
                     <ion-input name="password"
                                 type="password"
                                 [(ngModel)]="loginUser.pass"
@@ -44,7 +44,7 @@
               <ion-button type="submit"
                           color="tertiary"
                           shape="round">
-                Login
+                Iniciar Sesión
               </ion-button>
             </ion-col>
           </ion-row>
@@ -59,37 +59,44 @@
     <ion-slide>
 
       
-      <ion-grid fixed>
+      <ion-grid fixed class="login-form">
           <!--Avatar selector-->
           <app-avatar-selector (avatarSel)="usuario.avatar=$event"></app-avatar-selector>
             <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
                 <ion-row>
                     <ion-col>
                         
-                        <ion-list>
+                        <ion-list class="inputs-login">
                             
                             <ion-item>
-                            <ion-label>Email</ion-label>
                             <ion-input name="email" 
                                         type="email"
                                         [(ngModel)]="usuario.email"
+                                        placeholder="Correo electrónico"
                                         required></ion-input>
                             </ion-item>
 
                             <ion-item>
-                            <ion-label>Nombre</ion-label>
                             <ion-input name="nombre"
                                         type="text"
                                         [(ngModel)]="usuario.nombre"
+                                        placeholder="Nombre"
                                         required></ion-input>
                             </ion-item>
 
                             <ion-item>
-                            <ion-label>Password</ion-label>
                             <ion-input name="password"
                                         type="password"
                                         [(ngModel)]="usuario.password"
+                                        placeholder="Password"
                                         required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-input name="password2"
+                                          type="password"
+                                          [(ngModel)]="usuario.password"
+                                          placeholder="Confirmar contraseña"
+                                          required></ion-input>
                             </ion-item>
 
                         </ion-list>
@@ -101,7 +108,7 @@
                     <ion-button type="submit"
                                 color="tertiary"
                                 shape="round">
-                        Crear usuario
+                        Registrarme
                     </ion-button>
                 </ion-col>
             </ion-row>

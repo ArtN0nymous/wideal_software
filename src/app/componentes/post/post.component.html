@@ -8,7 +8,7 @@
       <h4>{{post.user?.email}}</h4>
     </ion-label>
   </ion-item>
-  <ion-slides mode="ios" pager="ios" *ngIf="post.imgs?.length > 1">
+  <ion-slides mode="ios" pager="ios" *ngIf="imgs.length > 1">
     <ion-slide *ngFor="let img of post.imgs" class="image-slide" [style]="(img | imagen:post.user?._id)|domSanitizer"></ion-slide>
   </ion-slides>
   <ion-slides *ngIf="post.imgs?.length === 1" [options]="soloOpts">

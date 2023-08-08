@@ -16,7 +16,9 @@ export class UsuarioGuard implements CanActivate,CanLoad {
     return false;
   }
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-   return this.userService.validaToken();  
+   //return this.userService.validaToken(); 
+   //TODO: VALIDATE IF USER IS LOGED IN
+   return false; 
   }
   
 }
