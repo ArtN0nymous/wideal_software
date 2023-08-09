@@ -17,14 +17,25 @@ img {
     opacity: 1 !important;
 }
 .inputs-login{
-    background-color: white !important;
     border-radius: 10px;
 }
 ion-content {
-    --background: linear-gradient(to bottom, #450fd9, #22b1ce);
+    --background: linear-gradient(to bottom, #3c0fb7, #22b1ce);
   }
 .login-form{
     border-radius: 10px;
     position: absolute;
+    width: 100%;
     top: 10px;
+}
+.login-icon-background{
+    background: linear-gradient(to right, #23bedc,#4c15e5);
+    width: fit-content;
+    margin: auto;
+    border-radius: 39%;
+}
+.col-vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

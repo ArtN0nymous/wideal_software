@@ -15,17 +15,26 @@ export class LoginPage implements OnInit {
   @ViewChild('slidePrincipal') slides!: IonSlides;
   constructor(private userService:UsuariosService,private dataLocal:DataLocalService,private navCtrl:NavController) { }
   loginUser={
-    user:'exampleq@mail.com',
-    pass:'123456',
+    user:'',
+    pass:'',
   };
   usuario:User={
-    email:'test',
-    password:'123456',
-    nombre:'Test',
+    email:'',
+    password:'',
+    nombre:'',
     avatar:'av-1.png'
   };
+  password2="";
+  type = "password";
   ngOnInit() {
-
+  
+  }
+  show(event:any){
+    if(!event.detail.checked){
+      this.type = "password";
+    }else{
+      this.type = "text";
+    }
   }
   //BLOQUEAR SLIDES
   ionViewDidEnter() {

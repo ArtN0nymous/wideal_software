@@ -1,44 +1,45 @@
 <ion-content>
-
-
   <ion-slides class="mainSlide" #slidePrincipal>
-    
     <ion-slide>
-
       <form (ngSubmit)="login(fLogin)" #fLogin="ngForm" class="login-form">
         <ion-grid fixed>
-
           <ion-row>
-            <ion-col>
-              <img src="/assets/icon.png">
+            <ion-col size="12" class="ion-text-center">
+              <div class="login-icon-background">
+                <img src="/assets/icon.png" style="display: block; margin: auto;">
+              </div>
             </ion-col>
           </ion-row>
-        
           <ion-row>
             <ion-col>
-              
-                <ion-list class="inputs-login">
-                  
-                  <ion-item>
-                    <ion-label>Usuario:</ion-label>
-                    <ion-input name="email"
-                                type="email"
-                                [(ngModel)]="loginUser.user"
-                                required></ion-input>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>Contraseña:</ion-label>
-                    <ion-input name="password"
-                                type="password"
-                                [(ngModel)]="loginUser.pass"
-                                required></ion-input>
-                  </ion-item>
-
-                </ion-list>
+              <ion-list class="inputs-login">
+                <ion-item>
+                  <ion-icon name="person" slot="start"></ion-icon>
+                  <ion-input name="email"
+                              type="email"
+                              [(ngModel)]="loginUser.user"
+                              placeholder="Ingrese el nombre de usuario"
+                              required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="lock-closed" slot="start"></ion-icon>
+                  <ion-input name="password"
+                              [type]="type"
+                              [(ngModel)]="loginUser.pass"
+                              placeholder="Ingrese su contraseña"
+                              required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>            
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Mostrar contraseña: </ion-label>
+            </ion-col>
+            <ion-col class="col-vertical-center">
+              <ion-toggle color="primary" name="show" (ionChange)="show($event)"></ion-toggle>
             </ion-col>
           </ion-row>
-
           <ion-row>
             <ion-col>
               <ion-button type="submit"
@@ -48,17 +49,10 @@
               </ion-button>
             </ion-col>
           </ion-row>
-
         </ion-grid>
       </form>
-    
-
-
     </ion-slide>
-
     <ion-slide>
-
-      
       <ion-grid fixed class="login-form">
           <!--Avatar selector-->
           <app-avatar-selector (avatarSel)="usuario.avatar=$event"></app-avatar-selector>
@@ -88,13 +82,13 @@
                             <ion-input name="password"
                                         type="password"
                                         [(ngModel)]="usuario.password"
-                                        placeholder="Password"
+                                        placeholder="Contraseña"
                                         required></ion-input>
                             </ion-item>
                             <ion-item>
                               <ion-input name="password2"
                                           type="password"
-                                          [(ngModel)]="usuario.password"
+                                          [value]="password2"
                                           placeholder="Confirmar contraseña"
                                           required></ion-input>
                             </ion-item>
@@ -115,23 +109,12 @@
             
             </form>
         </ion-grid>
-  
-  
       </ion-slide>
-
-
   </ion-slides>
-
-
-
 </ion-content>
-
-
 <ion-footer no-border>
   <ion-toolbar>
-    
     <ion-row>
-
       <ion-col>
           <ion-button shape="round"
                       expand="full"
@@ -153,8 +136,5 @@
       </ion-col>
 
     </ion-row>
-
-
-
   </ion-toolbar>
 </ion-footer>
