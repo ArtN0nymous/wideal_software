@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { User } from '../interfaces/interfaces';
 import { NavController } from '@ionic/angular';
 import { DataLocalService } from './data-local.service';
-const URL = environment.url;
+const URL = '';
 @Injectable({
   providedIn: 'root'
 })

@@ -5,7 +5,7 @@ import { ResponsePost, Post } from '../interfaces/interfaces';
 import { DataLocalService } from './data-local.service';
 import { UsuariosService } from './usuarios.service';
 import {FileTransfer,FileUploadOptions,FileTransferObject} from '@awesome-cordova-plugins/file-transfer/ngx'
-const URL = environment.url;
+const URL = '';
 @Injectable({
   providedIn: 'root'
 })
