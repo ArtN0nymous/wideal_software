@@ -4,6 +4,7 @@ import { IonSlides, NavController } from '@ionic/angular';
 import { UsuariosService } from '../../services/usuarios.service';
 import { DataLocalService } from '../../services/data-local.service';
 import { User } from '../../interfaces/interfaces';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { User } from '../../interfaces/interfaces';
 export class LoginPage implements OnInit {
 
   @ViewChild('slidePrincipal') slides!: IonSlides;
-  constructor(private userService:UsuariosService,private dataLocal:DataLocalService,private navCtrl:NavController) { }
+  constructor(private userService:UsuariosService,private dataLocal:DataLocalService,private navCtrl:NavController,private fire:FirebaseService) { }
   loginUser={
     user:'',
     pass:'',
@@ -45,6 +46,10 @@ export class LoginPage implements OnInit {
     if(fLogin.invalid){
       return;
     }
+    this.fire.getNotes().subscribe((res)=>{
+      console.log(res);
+    });
+    /*
     this.userService.login(this.loginUser.user,this.loginUser.pass).then((res:any)=>{
       console.log(res);
       if(res){
@@ -54,7 +59,7 @@ export class LoginPage implements OnInit {
         //alerta
         this.dataLocal.mostrarToast('Usuario o contraseña incorrecta');
       }
-    });
+    });*/
   }
   register(fRegister:NgForm){
     if(fRegister.invalid){return;};
