@@ -22,4 +22,20 @@
   <ion-infinite-scroll [disabled]="!habilitado" threshold="150px" (ionInfinite)="siguiente($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="customfab">
+      <ion-icon name="menu-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top" class="custom-fab-button">
+      <ion-fab-button color="danger">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="customfab">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="customfab">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
