@@ -19,7 +19,7 @@ export class DataLocalService {
     const toast = await this.toastCtrl.create({
       message,
       position:'top',
-      duration:3000,
+      duration:3500,
     });
     toast.present();
   }

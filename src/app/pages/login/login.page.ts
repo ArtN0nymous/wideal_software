@@ -56,19 +56,10 @@ export class LoginPage implements OnInit {
       this.dataLocal.mostrarToast('Ingresa un correo valido.');
       return;
     }
-    /*
-    this.userService.login(this.loginUser.user,this.loginUser.pass).then((res:any)=>{
-      console.log(res);
-      if(res){
-        //navegar
-        this.navCtrl.navigateRoot('/main/tabs/tab1',{animated:true});
-      }else{
-        //alerta
-        this.dataLocal.mostrarToast('Usuario o contraseña incorrecta');
-      }
-    });*/
     this.fire.login(this.loginUser.user,this.loginUser.pass).then((result:any)=>{
-      console.log('Login like',result);
+      if(result){
+        this.navCtrl.navigateRoot('/main/tabs/tab1',{animated:true});
+      }
     }).catch((err:any)=>{
       this.dataLocal.mostrarToast('Verifica tus datos o vuelve intentarlo más tarde :3.');
     });

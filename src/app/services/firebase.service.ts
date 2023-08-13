@@ -26,8 +26,14 @@ export class FirebaseService {
     return collectionData(colRef);
   }
   async login(email:string,pass:string){
-    const result = await signInWithEmailAndPassword(this.auth,email,pass);
-    return result;
+    try{
+      const result = await signInWithEmailAndPassword(this.auth,email,pass);
+      await this.userService.saveUser(result);
+      return true;
+    }catch(error){
+      throw error;
+    }
+    
   }
   async register(email: string, pass: string, displayName: string) {
     try {
