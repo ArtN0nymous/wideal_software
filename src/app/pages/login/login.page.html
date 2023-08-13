@@ -67,6 +67,7 @@
                                         type="email"
                                         [(ngModel)]="usuario.email"
                                         placeholder="Correo electrónico"
+                                        maxlength="255"
                                         required></ion-input>
                             </ion-item>
 
@@ -75,6 +76,8 @@
                                         type="text"
                                         [(ngModel)]="usuario.nombre"
                                         placeholder="Nombre"
+                                        minlength="4"
+                                        maxlength="100"
                                         required></ion-input>
                             </ion-item>
 
@@ -83,12 +86,16 @@
                                         type="password"
                                         [(ngModel)]="usuario.password"
                                         placeholder="Contraseña"
+                                        minlength="8"
+                                        maxlength="32"
                                         required></ion-input>
                             </ion-item>
                             <ion-item>
                               <ion-input name="password2"
                                           type="password"
-                                          [value]="password2"
+                                          [(ngModel)]="password2"
+                                          minlength="8"
+                                          maxlength="32"
                                           placeholder="Confirmar contraseña"
                                           required></ion-input>
                             </ion-item>

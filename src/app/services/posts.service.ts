@@ -15,7 +15,7 @@ export class PostsService {
   token:string = '';
   newPOst = new EventEmitter<Post>();
   constructor(private http:HttpClient,private usuarioService:UsuariosService, private fileTransfer:FileTransfer) {
-    usuarioService.loadToken().then((res)=>{
+    usuarioService.loadUser().then((res)=>{
       this.token = usuarioService.token||'';
     });
   }
