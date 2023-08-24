@@ -1,22 +1,10 @@
-<ion-header no-border>
-<ion-toolbar>
-    <ion-buttons slot="end">
-    <ion-button (click)="logout()"
-                color="danger">
-        <ion-icon slot="icon-only" name="exit"></ion-icon>
-    </ion-button>
-    </ion-buttons>
-</ion-toolbar>
-</ion-header>
-
-
 <ion-content>
     <ion-row>
         <ion-grid fixed>
             <ion-row>
             <ion-searchbar (ionChange)="search($event)" debounce="300"></ion-searchbar>
             <ion-col size="6" sizeLg="3" sizeMd="4" sizeSm="6" *ngFor="let item of users">
-                <ion-card>
+                <ion-card (click)="showProfile(item)">
                     <ion-img [src]="item.url_photo"></ion-img>
                 </ion-card>
                 <ion-card-header>

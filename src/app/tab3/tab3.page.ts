@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { DataLocalService } from '../services/data-local.service';
 import { PostsService } from '../services/posts.service';
 import { FirebaseService } from '../services/firebase.service';
+import { ModalController } from '@ionic/angular';
+import { ProfilePage } from '../pages/profile/profile.page';
 
 
 @Component({
@@ -24,7 +26,7 @@ export class Tab3Page implements OnInit{
     avatar : ''
   }
   users:UserProfile[]=[];
-  constructor(private usuarioService:UsuariosService,private datLocal:DataLocalService,private fire:FirebaseService) {}
+  constructor(private usuarioService:UsuariosService,private datLocal:DataLocalService,private fire:FirebaseService, private modalCtrl:ModalController) {}
   logout(){
     this.usuarioService.logout();
   }
@@ -33,6 +35,19 @@ export class Tab3Page implements OnInit{
   }
   async search(event:any){
     this.users = await this.fire.searchUser(event.detail.value);
+  }
+  async showProfile(user:UserProfile){
+    const modal = await this.modalCtrl.create({
+      component: ProfilePage,
+      componentProps:{
+        user,
+      }
+    });
+    modal.present();
+
+    const { data, role } = await modal.onDidDismiss();
+
+    //console.log(data);
   }
   /*async actualizar(fActualizar:NgForm){
     if(fActualizar.invalid){

@@ -76,4 +76,6 @@ export interface UserProfile {
     chats?:         string;
     descripcion?:   string;
     email?:         string;
+    phoneNumber?:   string;
+    uid?:           string;
 }

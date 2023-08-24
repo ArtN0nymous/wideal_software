@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -25,6 +26,7 @@ import { environment } from '../environments/environment';
     provideFirebaseApp(()=>initializeApp(environment.firebaseConfig)),
     provideFirestore(()=>getFirestore()),
     provideAuth(()=>getAuth()),
+    provideStorage(()=>getStorage())
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileTransfer],
   bootstrap: [AppComponent],

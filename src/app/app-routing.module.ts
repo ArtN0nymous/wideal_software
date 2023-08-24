@@ -16,6 +16,10 @@ const routes: Routes = [
     path:'',
     pathMatch:'full',
     redirectTo:'main/tabs/tab1'
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 @NgModule({
