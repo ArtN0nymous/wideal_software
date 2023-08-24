@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { User, UserResponse} from '../interfaces/interfaces';
 import { NavController } from '@ionic/angular';
 import { DataLocalService } from './data-local.service';
-import { UserCredential } from 'firebase/auth';
+import { UserCredential} from 'firebase/auth';
 const URL = '';
 @Injectable({
   providedIn: 'root'

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../services/usuarios.service';
-import { User, UserResponse, ProviderDatum } from '../interfaces/interfaces';
+import { User, UserResponse, ProviderDatum, UserProfile } from '../interfaces/interfaces';
 import { NgForm } from '@angular/forms';
 import { DataLocalService } from '../services/data-local.service';
 import { PostsService } from '../services/posts.service';
+import { FirebaseService } from '../services/firebase.service';
 
 
 @Component({
@@ -22,13 +23,16 @@ export class Tab3Page implements OnInit{
     photoURL : null,
     avatar : ''
   }
-  constructor(private usuarioService:UsuariosService,private datLocal:DataLocalService, private postService:PostsService) {}
+  users:UserProfile[]=[];
+  constructor(private usuarioService:UsuariosService,private datLocal:DataLocalService,private fire:FirebaseService) {}
   logout(){
-    this.postService.pagina=0;
     this.usuarioService.logout();
   }
   ngOnInit(): void {
     this.user=this.usuarioService.getUsuario();
+  }
+  async search(event:any){
+    this.users = await this.fire.searchUser(event.detail.value);
   }
   /*async actualizar(fActualizar:NgForm){
     if(fActualizar.invalid){

@@ -64,3 +64,16 @@ export interface StsTokenManager {
     accessToken:    string;
     expirationTime: number;
 }
+export interface UserProfile {
+    following?:     string;
+    displayName?:   string;
+    url_photo?:     string;
+    friends?:       string;
+    followme?:      string;
+    solicitudes?:   string;
+    url_portada?:   string;
+    color_portada?: string;
+    chats?:         string;
+    descripcion?:   string;
+    email?:         string;
+}
