@@ -1,5 +1,5 @@
 {
-  "name": "fotosgram",
+  "name": "widdall",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -22,6 +22,7 @@
     "@angular/router": "^15.0.0",
     "@awesome-cordova-plugins/file-transfer": "^6.3.0",
     "@awesome-cordova-plugins/image-picker": "^6.4.0",
+    "@awesome-cordova-plugins/status-bar": "^6.4.0",
     "@capacitor/android": "5.0.3",
     "@capacitor/app": "4.1.1",
     "@capacitor/camera": "^4.0.0",
@@ -33,7 +34,7 @@
     "@ionic/angular": "^6.1.9",
     "@ionic/storage": "^2.3.0",
     "@ionic/storage-angular": "^3.0.6",
-    "cordova-plugin-telerik-imagepicker": "^2.3.6",
+    "cordova-plugin-statusbar": "^3.0.0",
     "firebase": "^9.23.0",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",

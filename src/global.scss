@@ -39,3 +39,10 @@ ion-avatar {
     height: 5rem;
     width: 5rem;
 }
+.ios ion-header::part(background) {
+    background-color: #3c0fb7;
+}
+
+.md ion-header::part(background) {
+    background-color: #3c0fb7;
+}

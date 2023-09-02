@@ -6,17 +6,20 @@ import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { NewpostComponent } from './newpost/newpost.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  entryComponents:[PostComponent,PostsComponent,AvatarSelectorComponent,MapaComponent],
-  declarations: [PostComponent,PostsComponent,AvatarSelectorComponent,MapaComponent],
+  entryComponents:[PostComponent,PostsComponent,AvatarSelectorComponent,MapaComponent, NewpostComponent],
+  declarations: [PostComponent,PostsComponent,AvatarSelectorComponent,MapaComponent, NewpostComponent],
   exports:[PostsComponent,AvatarSelectorComponent,MapaComponent],
   imports: [
     CommonModule,
     IonicModule,
     PipesModule,
+    FormsModule,
   ]
 })
 export class ComponentesModule { }

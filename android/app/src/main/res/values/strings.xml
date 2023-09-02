@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">fotosgram</string>
-    <string name="title_activity_main">fotosgram</string>
+    <string name="app_name">widdall</string>
+    <string name="title_activity_main">widdall</string>
     <string name="package_name">ramsus.fostogram.app</string>
     <string name="custom_url_scheme">ramsus.fostogram.app</string>
 </resources>

@@ -15,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import {FileTransfer} from '@awesome-cordova-plugins/file-transfer/ngx'
 import { CameraPlugin } from '@capacitor/camera/dist/esm/index';
 import { environment } from '../environments/environment';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -28,7 +29,7 @@ import { environment } from '../environments/environment';
     provideAuth(()=>getAuth()),
     provideStorage(()=>getStorage())
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileTransfer],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileTransfer, StatusBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'ramsus.fostogram.app',
-  appName: 'fotosgram',
+  appId: 'ramsus.widdall.app',
+  appName: 'widdall',
   webDir: 'www',
   bundledWebRuntime: false
 };

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore,collection,collectionData,addDoc,setDoc, getDocs,query,where } from '@angular/fire/firestore';
-import { uploadBytes, ref, getStorage } from '@angular/fire/storage';
+import { uploadBytes, ref, getStorage,getDownloadURL } from '@angular/fire/storage';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, User as FireUser} from '@angular/fire/auth';
 import { Storage } from '@ionic/storage-angular';
 import { UsuariosService } from './usuarios.service';
@@ -20,6 +20,7 @@ export class FirebaseService {
     providerId : '',
     uid : ''
   }
+  imgs:string[]=[];
   constructor( private firestore: Firestore, private auth: Auth,private userService: UsuariosService ,private dataLocal:DataLocalService,private navCtrl:NavController) {}
   userRef = collection(this.firestore,'users');
   getNotes(){
@@ -53,7 +54,7 @@ export class FirebaseService {
         email,
         following:'',
         followme:'',
-        fiends:'',
+        friends:'',
         solicitudes:'',
         url_photo:'',
         url_portada:'',
@@ -91,5 +92,25 @@ export class FirebaseService {
     });
     console.log(posts);
     return posts;
+  }
+  async subirImg(img:any,location:string){
+    let refStorage = ref(getStorage(),location);
+    let url = '';
+    uploadBytes(refStorage,img).then(async(result)=>{
+      url = await getDownloadURL(result.ref);
+      this.imgs.push(url);
+    });
+    return this.imgs;
+  }
+  async savePost(post:Post){
+    try {
+      const colRef = collection(this.firestore,'posts');
+      await addDoc(colRef,post);
+      return true;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+
   }
 }
